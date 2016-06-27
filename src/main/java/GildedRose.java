@@ -49,16 +49,12 @@ public class GildedRose {
 
     private void updateBackstageQuality(int i) {
         if (isBackstage(i)) {
-            if (isSellInEqualOrLessThanTen(i)) {
-                if (isQualityLessThanFifty(i)) {
-                    increaseQuality(i);
-                }
+            if (isSellInEqualOrLessThanTen(i) && isQualityLessThanFifty(i)) {
+                increaseQuality(i);
             }
 
-            if (isSellinEqualOrLessThanFive(i)) {
-                if (isQualityLessThanFifty(i)) {
-                    increaseQuality(i);
-                }
+            if (isSellinEqualOrLessThanFive(i) && isQualityLessThanFifty(i)) {
+                increaseQuality(i);
             }
         }
     }
