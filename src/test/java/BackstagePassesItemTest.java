@@ -51,4 +51,14 @@ public class BackstagePassesItemTest {
 
         assertThat(item.getQuality(), is(0));
     }
+
+    @Test
+    public void when_we_update_the_day_quality_cannot_be_more_than_fifty() throws Exception {
+        Item item = new Item(BACKSTAGE_PASSES, 3, 50);
+        GildedRose gildedRose = new GildedRose(asList(item));
+
+        gildedRose.updateQuality();
+
+        assertThat(item.getQuality(), is(50));
+    }
 }
