@@ -12,13 +12,12 @@ public class SulfurasItemTest {
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     @Test
-    public void when_we_update_the_day_sulfuras_quality_should_not_change() {
+    public void when_we_update_the_day_quality_should_not_change() {
         Item item = new Item(SULFURAS, SELL_IN, QUALITY);
         GildedRose gildedRose = new GildedRose(asList(item));
 
         gildedRose.updateQuality();
 
-        assertThat(item.getSellIn(), is(0));
         assertThat(item.getQuality(), is(80));
     }
 
