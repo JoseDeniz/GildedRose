@@ -11,24 +11,24 @@ public class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.size(); i++) {
             if ((!isAged(i)) && !isBackstage(i)) {
-                if (items.get(i).getQuality() > 0) {
+                if (isQualityMoreThanZero(i)) {
                     if (!isSulfuras(i)) {
                         decreaseQuality(i);
                     }
                 }
             } else {
-                if (items.get(i).getQuality() < 50) {
+                if (isQualityLessThanFifty(i)) {
                     increaseQuality(i);
 
                     if (isBackstage(i)) {
-                        if (items.get(i).getSellIn() < 11) {
-                            if (items.get(i).getQuality() < 50) {
+                        if (isSellInEqualOrLessThanTen(i)) {
+                            if (isQualityLessThanFifty(i)) {
                                 increaseQuality(i);
                             }
                         }
 
-                        if (items.get(i).getSellIn() < 6) {
-                            if (items.get(i).getQuality() < 50) {
+                        if (isSellinEqualOrLessThanFive(i)) {
+                            if (isQualityLessThanFifty(i)) {
                                 increaseQuality(i);
                             }
                         }
@@ -40,10 +40,10 @@ public class GildedRose {
                 decreaseSellIn(i);
             }
 
-            if (items.get(i).getSellIn() < 0) {
+            if (isSellInLessThanZero(i)) {
                 if (!isAged(i)) {
                     if (!isBackstage(i)) {
-                        if (items.get(i).getQuality() > 0) {
+                        if (isQualityMoreThanZero(i)) {
                             if (!isSulfuras(i)) {
                                 decreaseQuality(i);
                             }
@@ -52,12 +52,32 @@ public class GildedRose {
                         items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
                     }
                 } else {
-                    if (items.get(i).getQuality() < 50) {
+                    if (isQualityLessThanFifty(i)) {
                         increaseQuality(i);
                     }
                 }
             }
         }
+    }
+
+    private boolean isSellInEqualOrLessThanTen(int i) {
+        return items.get(i).getSellIn() <= 10;
+    }
+
+    private boolean isSellinEqualOrLessThanFive(int i) {
+        return items.get(i).getSellIn() <= 5;
+    }
+
+    private boolean isSellInLessThanZero(int i) {
+        return items.get(i).getSellIn() < 0;
+    }
+
+    private boolean isQualityLessThanFifty(int i) {
+        return items.get(i).getQuality() < 50;
+    }
+
+    private boolean isQualityMoreThanZero(int i) {
+        return items.get(i).getQuality() > 0;
     }
 
     private boolean isSulfuras(int i) {
