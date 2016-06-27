@@ -19,20 +19,7 @@ public class GildedRose {
             } else {
                 if (isQualityLessThanFifty(i)) {
                     increaseQuality(i);
-
-                    if (isBackstage(i)) {
-                        if (isSellInEqualOrLessThanTen(i)) {
-                            if (isQualityLessThanFifty(i)) {
-                                increaseQuality(i);
-                            }
-                        }
-
-                        if (isSellinEqualOrLessThanFive(i)) {
-                            if (isQualityLessThanFifty(i)) {
-                                increaseQuality(i);
-                            }
-                        }
-                    }
+                    updateBackstageQuality(i);
                 }
             }
 
@@ -55,6 +42,22 @@ public class GildedRose {
                     if (isQualityLessThanFifty(i)) {
                         increaseQuality(i);
                     }
+                }
+            }
+        }
+    }
+
+    private void updateBackstageQuality(int i) {
+        if (isBackstage(i)) {
+            if (isSellInEqualOrLessThanTen(i)) {
+                if (isQualityLessThanFifty(i)) {
+                    increaseQuality(i);
+                }
+            }
+
+            if (isSellinEqualOrLessThanFive(i)) {
+                if (isQualityLessThanFifty(i)) {
+                    increaseQuality(i);
                 }
             }
         }
