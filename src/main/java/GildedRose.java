@@ -49,7 +49,7 @@ public class GildedRose {
                             }
                         }
                     } else {
-                        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
+                        decreasedQualityDouble(i);
                     }
                 } else {
                     if (isQualityLessThanFifty(i)) {
@@ -58,6 +58,10 @@ public class GildedRose {
                 }
             }
         }
+    }
+
+    private void decreasedQualityDouble(int i) {
+        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
     }
 
     private boolean isSellInEqualOrLessThanTen(int i) {
