@@ -18,4 +18,14 @@ public class AgedBrieItemTest {
 
         assertThat(item.getQuality(), is(1));
     }
+
+    @Test
+    public void when_we_update_the_day_quality_cannot_be_more_than_fifty() throws Exception {
+        Item item = new Item(AGED_BRIE, 3, 50);
+        GildedRose gildedRose = new GildedRose(asList(item));
+
+        gildedRose.updateQuality();
+
+        assertThat(item.getQuality(), is(50));
+    }
 }
