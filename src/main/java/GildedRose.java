@@ -9,95 +9,93 @@ public class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.size(); i++) {
-            if ((!isAged(i)) && !isBackstage(i)) {
-                if (isQualityMoreThanZero(i) && !isSulfuras(i)){
-                    decreaseQuality(i);
-                }
+        for (Item item : items) {
+            if ((!isAged(item)) && !isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
+                decreaseQuality(item);
             } else {
-                if (isQualityLessThanFifty(i)) {
-                    increaseQuality(i);
-                    updateBackstageQuality(i);
+                if (isQualityLessThanFifty(item)) {
+                    increaseQuality(item);
+                    updateBackstageQuality(item);
                 }
             }
 
-            if (!isSulfuras(i)) {
-                decreaseSellIn(i);
+            if (!isSulfuras(item)) {
+                decreaseSellIn(item);
             }
 
-            if (isSellInLessThanZero(i)) {
-                if (!isAged(i)) {
-                    if (!isBackstage(i) && isQualityMoreThanZero(i) && !isSulfuras(i)) {
-                        decreaseQuality(i);
+            if (isSellInLessThanZero(item)) {
+                if (!isAged(item)) {
+                    if (!isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
+                        decreaseQuality(item);
                     } else {
-                        decreasedQualityDouble(i);
+                        setQualityToZero(item);
                     }
                 } else {
-                    if (isQualityLessThanFifty(i)) {
-                        increaseQuality(i);
+                    if (isQualityLessThanFifty(item)) {
+                        increaseQuality(item);
                     }
                 }
             }
         }
     }
 
-    private void updateBackstageQuality(int i) {
-        if (isBackstage(i)) {
-            if (isSellInEqualOrLessThanTen(i) && isQualityLessThanFifty(i)) {
-                increaseQuality(i);
+    private void updateBackstageQuality(Item item) {
+        if (isBackstage(item)) {
+            if (isSellInEqualOrLessThanTen(item) && isQualityLessThanFifty(item)) {
+                increaseQuality(item);
             }
 
-            if (isSellinEqualOrLessThanFive(i) && isQualityLessThanFifty(i)) {
-                increaseQuality(i);
+            if (isSellinEqualOrLessThanFive(item) && isQualityLessThanFifty(item)) {
+                increaseQuality(item);
             }
         }
     }
 
-    private void decreasedQualityDouble(int i) {
-        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
+    private void setQualityToZero(Item item) {
+        item.setQuality(0);
     }
 
-    private boolean isSellInEqualOrLessThanTen(int i) {
-        return items.get(i).getSellIn() <= 10;
+    private boolean isSellInEqualOrLessThanTen(Item item) {
+        return item.getSellIn() <= 10;
     }
 
-    private boolean isSellinEqualOrLessThanFive(int i) {
-        return items.get(i).getSellIn() <= 5;
+    private boolean isSellinEqualOrLessThanFive(Item item) {
+        return item.getSellIn() <= 5;
     }
 
-    private boolean isSellInLessThanZero(int i) {
-        return items.get(i).getSellIn() < 0;
+    private boolean isSellInLessThanZero(Item item) {
+        return item.getSellIn() < 0;
     }
 
-    private boolean isQualityLessThanFifty(int i) {
-        return items.get(i).getQuality() < 50;
+    private boolean isQualityLessThanFifty(Item item) {
+        return item.getQuality() < 50;
     }
 
-    private boolean isQualityMoreThanZero(int i) {
-        return items.get(i).getQuality() > 0;
+    private boolean isQualityMoreThanZero(Item item) {
+        return item.getQuality() > 0;
     }
 
-    private boolean isSulfuras(int i) {
-        return "Sulfuras, Hand of Ragnaros".equals(items.get(i).getName());
+    private boolean isSulfuras(Item item) {
+        return "Sulfuras, Hand of Ragnaros".equals(item.getName());
     }
 
-    private boolean isAged(int i) {
-        return "Aged Brie".equals(items.get(i).getName());
+    private boolean isAged(Item item) {
+        return "Aged Brie".equals(item.getName());
     }
 
-    private boolean isBackstage(int i) {
-        return "Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName());
+    private boolean isBackstage(Item item) {
+        return "Backstage passes to a TAFKAL80ETC concert".equals(item.getName());
     }
 
-    private void decreaseSellIn(int i) {
-        items.get(i).setSellIn(items.get(i).getSellIn() - 1);
+    private void decreaseSellIn(Item item) {
+        item.setSellIn(item.getSellIn() - 1);
     }
 
-    private void increaseQuality(int i) {
-        items.get(i).setQuality(items.get(i).getQuality() + 1);
+    private void increaseQuality(Item item) {
+        item.setQuality(item.getQuality() + 1);
     }
 
-    private void decreaseQuality(int i) {
-        items.get(i).setQuality(items.get(i).getQuality() - 1);
+    private void decreaseQuality(Item item) {
+        item.setQuality(item.getQuality() - 1);
     }
 }
