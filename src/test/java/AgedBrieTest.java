@@ -5,17 +5,18 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class AgedBrieTest {
-
-    private String AGED_BRIE = "Aged Brie";
+    private static final int SELL_IN = 2;
+    private static final int QUALITY = 0;
+    private static final String AGED_BRIE = "Aged Brie";
 
     @Test
     public void when_whe_update_the_day_aged_brie_should_be_increased() throws Exception {
-        Item item = new Item(AGED_BRIE,2,0);
+        Item item = new Item(AGED_BRIE, SELL_IN, QUALITY);
         GildedRose gildedRose = new GildedRose(asList(item));
 
         gildedRose.updateQuality();
 
-        assertThat(item.getSellIn(),is(1));
-        assertThat(item.getQuality(),is(1));
+        assertThat(item.getSellIn(), is(1));
+        assertThat(item.getQuality(), is(1));
     }
 }
