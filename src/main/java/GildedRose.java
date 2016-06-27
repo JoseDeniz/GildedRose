@@ -10,9 +10,9 @@ public class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.size(); i++) {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
+            if ((!isAged(i)) && !isBackstage(i)) {
                 if (items.get(i).getQuality() > 0) {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
+                    if (!isSulfuras(i)) {
                         decreaseQuality(i);
                     }
                 }
@@ -20,7 +20,7 @@ public class GildedRose {
                 if (items.get(i).getQuality() < 50) {
                     increaseQuality(i);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
+                    if (isBackstage(i)) {
                         if (items.get(i).getSellIn() < 11) {
                             if (items.get(i).getQuality() < 50) {
                                 increaseQuality(i);
@@ -36,15 +36,15 @@ public class GildedRose {
                 }
             }
 
-            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
+            if (!isSulfuras(i)) {
                 decreaseSellIn(i);
             }
 
             if (items.get(i).getSellIn() < 0) {
-                if (!"Aged Brie".equals(items.get(i).getName())) {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
+                if (!isAged(i)) {
+                    if (!isBackstage(i)) {
                         if (items.get(i).getQuality() > 0) {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
+                            if (!isSulfuras(i)) {
                                 decreaseQuality(i);
                             }
                         }
@@ -60,7 +60,19 @@ public class GildedRose {
         }
     }
 
-    void decreaseSellIn(int i) {
+    private boolean isSulfuras(int i) {
+        return "Sulfuras, Hand of Ragnaros".equals(items.get(i).getName());
+    }
+
+    private boolean isAged(int i) {
+        return "Aged Brie".equals(items.get(i).getName());
+    }
+
+    private boolean isBackstage(int i) {
+        return "Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName());
+    }
+
+    private void decreaseSellIn(int i) {
         items.get(i).setSellIn(items.get(i).getSellIn() - 1);
     }
 
