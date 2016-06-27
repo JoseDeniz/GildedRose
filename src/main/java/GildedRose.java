@@ -13,23 +13,23 @@ public class GildedRose {
             if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
                 if (items.get(i).getQuality() > 0) {
                     if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
-                        items.get(i).setQuality(items.get(i).getQuality() - 1);
+                        decreaseQuality(i);
                     }
                 }
             } else {
                 if (items.get(i).getQuality() < 50) {
-                    items.get(i).setQuality(items.get(i).getQuality() + 1);
+                    increaseQuality(i);
 
                     if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
                         if (items.get(i).getSellIn() < 11) {
                             if (items.get(i).getQuality() < 50) {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                increaseQuality(i);
                             }
                         }
 
                         if (items.get(i).getSellIn() < 6) {
                             if (items.get(i).getQuality() < 50) {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                increaseQuality(i);
                             }
                         }
                     }
@@ -37,7 +37,7 @@ public class GildedRose {
             }
 
             if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
-                items.get(i).setSellIn(items.get(i).getSellIn() - 1);
+                decreaseSellIn(i);
             }
 
             if (items.get(i).getSellIn() < 0) {
@@ -45,7 +45,7 @@ public class GildedRose {
                     if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) {
                         if (items.get(i).getQuality() > 0) {
                             if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
-                                items.get(i).setQuality(items.get(i).getQuality() - 1);
+                                decreaseQuality(i);
                             }
                         }
                     } else {
@@ -53,10 +53,22 @@ public class GildedRose {
                     }
                 } else {
                     if (items.get(i).getQuality() < 50) {
-                        items.get(i).setQuality(items.get(i).getQuality() + 1);
+                        increaseQuality(i);
                     }
                 }
             }
         }
+    }
+
+    void decreaseSellIn(int i) {
+        items.get(i).setSellIn(items.get(i).getSellIn() - 1);
+    }
+
+    private void increaseQuality(int i) {
+        items.get(i).setQuality(items.get(i).getQuality() + 1);
+    }
+
+    private void decreaseQuality(int i) {
+        items.get(i).setQuality(items.get(i).getQuality() - 1);
     }
 }
