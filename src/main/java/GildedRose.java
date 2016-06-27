@@ -11,10 +11,8 @@ public class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.size(); i++) {
             if ((!isAged(i)) && !isBackstage(i)) {
-                if (isQualityMoreThanZero(i)) {
-                    if (!isSulfuras(i)) {
-                        decreaseQuality(i);
-                    }
+                if (isQualityMoreThanZero(i) && !isSulfuras(i)){
+                    decreaseQuality(i);
                 }
             } else {
                 if (isQualityLessThanFifty(i)) {
@@ -29,12 +27,8 @@ public class GildedRose {
 
             if (isSellInLessThanZero(i)) {
                 if (!isAged(i)) {
-                    if (!isBackstage(i)) {
-                        if (isQualityMoreThanZero(i)) {
-                            if (!isSulfuras(i)) {
-                                decreaseQuality(i);
-                            }
-                        }
+                    if (!isBackstage(i) && isQualityMoreThanZero(i) && !isSulfuras(i)) {
+                        decreaseQuality(i);
                     } else {
                         decreasedQualityDouble(i);
                     }
