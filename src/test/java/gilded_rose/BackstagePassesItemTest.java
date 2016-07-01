@@ -1,3 +1,5 @@
+package gilded_rose;
+
 import org.junit.Test;
 
 import static java.util.Arrays.asList;

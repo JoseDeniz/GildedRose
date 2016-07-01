@@ -1,3 +1,4 @@
+package gilded_rose;
 
 public class Item {
     public String name;

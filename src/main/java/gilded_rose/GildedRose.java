@@ -1,3 +1,5 @@
+package gilded_rose;
+
 import java.util.List;
 
 public class GildedRose {
