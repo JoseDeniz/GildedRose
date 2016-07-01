@@ -15,12 +15,12 @@ public class SulfurasItemTest {
 
     @Test
     public void when_we_update_the_day_quality_should_not_change() {
-        Item item = new Item(SULFURAS, SELL_IN, QUALITY);
-        GildedRose gildedRose = new GildedRose(asList(item));
+        SulfurasItem sulfurasItem = new SulfurasItem(new Item(SULFURAS, SELL_IN, QUALITY));
+        GildedRose gildedRose = new GildedRose(asList(sulfurasItem));
 
         gildedRose.updateQuality();
 
-        assertThat(item.getQuality(), is(80));
+        assertThat(sulfurasItem.getQuality(), is(80));
     }
 
 }

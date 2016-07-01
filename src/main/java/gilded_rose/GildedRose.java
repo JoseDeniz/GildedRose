@@ -4,14 +4,15 @@ import java.util.List;
 
 public class GildedRose {
 
-    private List<Item> items;
+    private List<NormalItem> items;
 
-    public GildedRose(List<Item> items) {
+    public GildedRose(List<NormalItem> items) {
         this.items = items;
     }
 
     public void updateQuality() {
-        for (Item item : items) {
+        for (NormalItem normalItem : items) {
+            Item item = normalItem.getItem();
             if ((!isAged(item)) && !isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
                 decreaseQuality(item);
             } else {
