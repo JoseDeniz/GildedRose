@@ -13,7 +13,6 @@ public class AgedBrieItemTest {
 
     @Test
     public void when_whe_update_the_day_quality_should_be_increased() throws Exception {
-        Item item = new Item(AGED_BRIE, SELL_IN, QUALITY);
         AgedBrieItem agedBrieItem = new AgedBrieItem(new Item(AGED_BRIE, SELL_IN, QUALITY));
         GildedRose gildedRose = new GildedRose(asList(agedBrieItem));
 

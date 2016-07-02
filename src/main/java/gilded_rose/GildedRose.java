@@ -16,10 +16,7 @@ public class GildedRose {
             if (!isAged(item) && !isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
                 normalItem.decreaseQuality();
             } else {
-                if (isQualityLessThanFifty(item)) {
-                    normalItem.increaseQuality();
-                    updateBackstageQuality(normalItem);
-                }
+                normalItem.updateQuality();
             }
 
             if (!isSulfuras(item)) {
@@ -34,37 +31,14 @@ public class GildedRose {
                         setQualityToZero(item);
                     }
                 } else {
-                    if (isQualityLessThanFifty(item)) {
-                        normalItem.increaseQuality();
-                    }
+                    normalItem.increaseQuality();
                 }
-            }
-        }
-    }
-
-    private void updateBackstageQuality(NormalItem normalItem) {
-        Item item = normalItem.getItem();
-        if (isBackstage(item)) {
-            if (isSellInEqualOrLessThanTen(item) && isQualityLessThanFifty(item)) {
-                normalItem.increaseQuality();
-            }
-
-            if (isSellinEqualOrLessThanFive(item) && isQualityLessThanFifty(item)) {
-                normalItem.increaseQuality();
             }
         }
     }
 
     private void setQualityToZero(Item item) {
         item.setQuality(0);
-    }
-
-    private boolean isSellInEqualOrLessThanTen(Item item) {
-        return item.getSellIn() <= 10;
-    }
-
-    private boolean isSellinEqualOrLessThanFive(Item item) {
-        return item.getSellIn() <= 5;
     }
 
     private boolean isSellInLessThanZero(Item item) {

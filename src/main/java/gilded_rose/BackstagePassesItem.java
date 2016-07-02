@@ -6,4 +6,16 @@ public class BackstagePassesItem extends NormalItem {
         super(item);
     }
 
+    @Override
+    public void updateQuality() {
+        if (isQualityLessThanFifty(item))
+            increaseQuality();
+        if (isSellInEqualOrLessThanTen(item) && isQualityLessThanFifty(item)) {
+            increaseQuality();
+        }
+
+        if (isSellinEqualOrLessThanFive(item) && isQualityLessThanFifty(item)) {
+            increaseQuality();
+        }
+    }
 }

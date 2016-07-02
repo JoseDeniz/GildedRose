@@ -2,7 +2,7 @@ package gilded_rose;
 
 public class NormalItem {
 
-    private final Item item;
+    protected final Item item;
 
     public NormalItem(Item item) {
         this.item = item;
@@ -27,4 +27,20 @@ public class NormalItem {
     public void increaseQuality() {
         item.setQuality(item.getQuality() + 1);
     }
+
+    public void updateQuality() {
+    }
+
+    protected boolean isSellInEqualOrLessThanTen(Item item) {
+        return item.getSellIn() <= 10;
+    }
+
+    protected boolean isSellinEqualOrLessThanFive(Item item) {
+        return item.getSellIn() <= 5;
+    }
+
+    protected boolean isQualityLessThanFifty(Item item) {
+        return item.getQuality() < 50;
+    }
+
 }

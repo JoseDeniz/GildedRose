@@ -6,4 +6,9 @@ public class AgedBrieItem extends NormalItem {
         super(item);
     }
 
+    @Override
+    public void updateQuality() {
+        if (isQualityLessThanFifty(item))
+            increaseQuality();
+    }
 }
