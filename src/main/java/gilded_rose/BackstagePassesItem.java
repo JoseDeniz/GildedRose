@@ -8,13 +8,12 @@ public class BackstagePassesItem extends GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        if (!isSellInEqualsOrLessThanZero()) {
-            if (isQualityLessThanFifty())
-                increaseQuality();
-            if (isSellInEqualOrLessThanTen() && isQualityLessThanFifty()) {
+        if (!hasExpired()) {
+            increaseQuality();
+            if (isSellInEqualOrLessThanTen()) {
                 increaseQuality();
             }
-            if (isSellInEqualOrLessThanFive() && isQualityLessThanFifty()) {
+            if (isSellInEqualOrLessThanFive()) {
                 increaseQuality();
             }
             decreaseSellIn();

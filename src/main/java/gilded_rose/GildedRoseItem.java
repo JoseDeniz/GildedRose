@@ -23,7 +23,7 @@ public class GildedRoseItem {
     }
 
     protected void decreaseSellIn() {
-        if (!isSellInEqualsOrLessThanZero())
+        if (!hasExpired())
             item.setSellIn(item.getSellIn() - 1);
         else decreaseQuality();
     }
@@ -41,7 +41,7 @@ public class GildedRoseItem {
         return item.getQuality() > 0;
     }
 
-    protected boolean isSellInEqualsOrLessThanZero() {
+    protected boolean hasExpired() {
         return item.getSellIn() <= 0;
     }
 }
