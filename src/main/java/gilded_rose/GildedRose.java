@@ -17,8 +17,8 @@ public class GildedRose {
                 normalItem.decreaseQuality();
             } else {
                 if (isQualityLessThanFifty(item)) {
-                    increaseQuality(item);
-                    updateBackstageQuality(item);
+                    normalItem.increaseQuality();
+                    updateBackstageQuality(normalItem);
                 }
             }
 
@@ -35,21 +35,22 @@ public class GildedRose {
                     }
                 } else {
                     if (isQualityLessThanFifty(item)) {
-                        increaseQuality(item);
+                        normalItem.increaseQuality();
                     }
                 }
             }
         }
     }
 
-    private void updateBackstageQuality(Item item) {
+    private void updateBackstageQuality(NormalItem normalItem) {
+        Item item = normalItem.getItem();
         if (isBackstage(item)) {
             if (isSellInEqualOrLessThanTen(item) && isQualityLessThanFifty(item)) {
-                increaseQuality(item);
+                normalItem.increaseQuality();
             }
 
             if (isSellinEqualOrLessThanFive(item) && isQualityLessThanFifty(item)) {
-                increaseQuality(item);
+                normalItem.increaseQuality();
             }
         }
     }
@@ -88,10 +89,6 @@ public class GildedRose {
 
     private boolean isBackstage(Item item) {
         return "Backstage passes to a TAFKAL80ETC concert".equals(item.getName());
-    }
-
-    private void increaseQuality(Item item) {
-        item.setQuality(item.getQuality() + 1);
     }
 
 }
