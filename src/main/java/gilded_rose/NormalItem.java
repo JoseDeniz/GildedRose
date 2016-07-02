@@ -19,4 +19,8 @@ public class NormalItem {
     public void decreaseQuality() {
         this.item.setQuality(this.item.getQuality() - 1);
     }
+
+    public void decreaseSellIn() {
+        item.setSellIn(item.getSellIn() - 1);
+    }
 }

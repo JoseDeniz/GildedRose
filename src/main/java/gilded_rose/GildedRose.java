@@ -23,7 +23,7 @@ public class GildedRose {
             }
 
             if (!isSulfuras(item)) {
-                decreaseSellIn(item);
+                normalItem.decreaseSellIn();
             }
 
             if (isSellInLessThanZero(item)) {
@@ -88,10 +88,6 @@ public class GildedRose {
 
     private boolean isBackstage(Item item) {
         return "Backstage passes to a TAFKAL80ETC concert".equals(item.getName());
-    }
-
-    private void decreaseSellIn(Item item) {
-        item.setSellIn(item.getSellIn() - 1);
     }
 
     private void increaseQuality(Item item) {
