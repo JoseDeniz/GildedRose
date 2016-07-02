@@ -8,30 +8,30 @@ public class BackstagePassesItem extends GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        if (!isSellInEqualsOrLessThanZero(item)) {
-            if (isQualityLessThanFifty(item))
+        if (!isSellInEqualsOrLessThanZero()) {
+            if (isQualityLessThanFifty())
                 increaseQuality();
-            if (isSellInEqualOrLessThanTen(item) && isQualityLessThanFifty(item)) {
+            if (isSellInEqualOrLessThanTen() && isQualityLessThanFifty()) {
                 increaseQuality();
             }
-            if (isSellInEqualOrLessThanFive(item) && isQualityLessThanFifty(item)) {
+            if (isSellInEqualOrLessThanFive() && isQualityLessThanFifty()) {
                 increaseQuality();
             }
             decreaseSellIn();
         } else {
-            setQualityToZero(item);
+            setQualityToZero();
         }
     }
 
-    private boolean isSellInEqualOrLessThanTen(Item item) {
+    private boolean isSellInEqualOrLessThanTen() {
         return item.getSellIn() <= 10;
     }
 
-    private boolean isSellInEqualOrLessThanFive(Item item) {
+    private boolean isSellInEqualOrLessThanFive() {
         return item.getSellIn() <= 5;
     }
 
-    private void setQualityToZero(Item item) {
+    private void setQualityToZero() {
         item.setQuality(0);
     }
 }

@@ -8,7 +8,6 @@ public class AgedBrieItem extends GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        if (isQualityLessThanFifty(item))
-            increaseQuality();
+        increaseQuality();
     }
 }

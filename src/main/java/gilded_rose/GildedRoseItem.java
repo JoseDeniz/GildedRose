@@ -17,30 +17,31 @@ public class GildedRoseItem {
         decreaseSellIn();
     }
 
-    public void decreaseQuality() {
-        if (isQualityMoreThanZero(item))
+    protected void decreaseQuality() {
+        if (isQualityMoreThanZero())
             this.item.setQuality(this.item.getQuality() - 1);
     }
 
-    public void decreaseSellIn() {
-        if (!isSellInEqualsOrLessThanZero(item))
+    protected void decreaseSellIn() {
+        if (!isSellInEqualsOrLessThanZero())
             item.setSellIn(item.getSellIn() - 1);
         else decreaseQuality();
     }
 
-    public void increaseQuality() {
-        item.setQuality(item.getQuality() + 1);
+    protected void increaseQuality() {
+        if (isQualityLessThanFifty())
+            item.setQuality(item.getQuality() + 1);
     }
 
-    protected boolean isQualityLessThanFifty(Item item) {
+    protected boolean isQualityLessThanFifty() {
         return item.getQuality() < 50;
     }
 
-    protected boolean isQualityMoreThanZero(Item item) {
+    protected boolean isQualityMoreThanZero() {
         return item.getQuality() > 0;
     }
 
-    protected boolean isSellInEqualsOrLessThanZero(Item item) {
+    protected boolean isSellInEqualsOrLessThanZero() {
         return item.getSellIn() <= 0;
     }
 }
