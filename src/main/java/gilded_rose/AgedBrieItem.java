@@ -1,6 +1,6 @@
 package gilded_rose;
 
-public class AgedBrieItem extends NormalItem {
+public class AgedBrieItem extends GildedRoseItem {
 
     public AgedBrieItem(Item item) {
         super(item);

@@ -4,14 +4,14 @@ import java.util.List;
 
 public class GildedRose {
 
-    private List<NormalItem> items;
+    private List<GildedRoseItem> items;
 
-    public GildedRose(List<NormalItem> items) {
+    public GildedRose(List<GildedRoseItem> items) {
         this.items = items;
     }
 
     public void updateQuality() {
-        items.forEach(NormalItem::updateQuality);
+        items.forEach(GildedRoseItem::updateQuality);
     }
 
 }

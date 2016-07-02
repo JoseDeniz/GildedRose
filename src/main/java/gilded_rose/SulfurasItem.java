@@ -1,6 +1,6 @@
 package gilded_rose;
 
-public class SulfurasItem extends NormalItem {
+public class SulfurasItem extends GildedRoseItem {
 
     public SulfurasItem(Item item) {
         super(item);

@@ -1,10 +1,10 @@
 package gilded_rose;
 
-public class NormalItem {
+public class GildedRoseItem {
 
     protected final Item item;
 
-    public NormalItem(Item item) {
+    public GildedRoseItem(Item item) {
         this.item = item;
     }
 
