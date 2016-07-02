@@ -13,8 +13,8 @@ public class GildedRose {
     public void updateQuality() {
         for (NormalItem normalItem : items) {
             Item item = normalItem.getItem();
-            if ((!isAged(item)) && !isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
-                decreaseQuality(item);
+            if (!isAged(item) && !isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
+                normalItem.decreaseQuality();
             } else {
                 if (isQualityLessThanFifty(item)) {
                     increaseQuality(item);
@@ -29,7 +29,7 @@ public class GildedRose {
             if (isSellInLessThanZero(item)) {
                 if (!isAged(item)) {
                     if (!isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
-                        decreaseQuality(item);
+                        normalItem.decreaseQuality();
                     } else {
                         setQualityToZero(item);
                     }
@@ -98,7 +98,4 @@ public class GildedRose {
         item.setQuality(item.getQuality() + 1);
     }
 
-    private void decreaseQuality(Item item) {
-        item.setQuality(item.getQuality() - 1);
-    }
 }

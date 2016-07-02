@@ -15,4 +15,8 @@ public class NormalItem {
     public Integer getQuality() {
         return item.getQuality();
     }
+
+    public void decreaseQuality() {
+        this.item.setQuality(this.item.getQuality() - 1);
+    }
 }
