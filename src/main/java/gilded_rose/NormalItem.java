@@ -29,6 +29,7 @@ public class NormalItem {
     }
 
     public void updateQuality() {
+        decreaseQuality();
     }
 
     protected boolean isSellInEqualOrLessThanTen(Item item) {
