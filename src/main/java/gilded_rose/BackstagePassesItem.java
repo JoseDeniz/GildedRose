@@ -8,13 +8,12 @@ public class BackstagePassesItem extends NormalItem {
 
     @Override
     public void updateQuality() {
-        if (!isSellInLessThanZero(item)) {
+        if (!isSellInEqualsOrLessThanZero(item)) {
             if (isQualityLessThanFifty(item))
                 increaseQuality();
             if (isSellInEqualOrLessThanTen(item) && isQualityLessThanFifty(item)) {
                 increaseQuality();
             }
-
             if (isSellInEqualOrLessThanFive(item) && isQualityLessThanFifty(item)) {
                 increaseQuality();
             }
@@ -30,10 +29,6 @@ public class BackstagePassesItem extends NormalItem {
 
     private boolean isSellInEqualOrLessThanFive(Item item) {
         return item.getSellIn() <= 5;
-    }
-
-    private boolean isSellInLessThanZero(Item item) {
-        return item.getSellIn() < 0;
     }
 
     private void setQualityToZero(Item item) {

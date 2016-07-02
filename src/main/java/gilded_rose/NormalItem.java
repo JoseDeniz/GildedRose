@@ -8,29 +8,28 @@ public class NormalItem {
         this.item = item;
     }
 
-    public Item getItem() {
-        return item;
-    }
-
     public Integer getQuality() {
         return item.getQuality();
     }
 
+    public void updateQuality() {
+        decreaseQuality();
+        decreaseSellIn();
+    }
+
     public void decreaseQuality() {
-        this.item.setQuality(this.item.getQuality() - 1);
+        if (isQualityMoreThanZero(item))
+            this.item.setQuality(this.item.getQuality() - 1);
     }
 
     public void decreaseSellIn() {
-        item.setSellIn(item.getSellIn() - 1);
+        if (!isSellInEqualsOrLessThanZero(item))
+            item.setSellIn(item.getSellIn() - 1);
+        else decreaseQuality();
     }
 
     public void increaseQuality() {
         item.setQuality(item.getQuality() + 1);
-    }
-
-    public void updateQuality() {
-        if (isQualityMoreThanZero(item))
-            decreaseQuality();
     }
 
     protected boolean isQualityLessThanFifty(Item item) {
@@ -41,4 +40,7 @@ public class NormalItem {
         return item.getQuality() > 0;
     }
 
+    protected boolean isSellInEqualsOrLessThanZero(Item item) {
+        return item.getSellIn() <= 0;
+    }
 }
