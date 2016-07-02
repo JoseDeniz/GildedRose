@@ -22,28 +22,20 @@ public class GildedRose {
 
             if (isSellInLessThanZero(item)) {
                 if (!isAged(item)) {
-                    if (!isBackstage(item) && isQualityMoreThanZero(item) && !isSulfuras(item)) {
+                    if (!isBackstage(item) && !isSulfuras(item)) {
                         normalItem.updateQuality();
                     } else {
-                        setQualityToZero(item);
+                        normalItem.updateQuality();
                     }
                 } else {
-                    normalItem.increaseQuality();
+                    normalItem.updateQuality();
                 }
             }
         }
     }
 
-    private void setQualityToZero(Item item) {
-        item.setQuality(0);
-    }
-
     private boolean isSellInLessThanZero(Item item) {
         return item.getSellIn() < 0;
-    }
-
-    private boolean isQualityMoreThanZero(Item item) {
-        return item.getQuality() > 0;
     }
 
     private boolean isSulfuras(Item item) {

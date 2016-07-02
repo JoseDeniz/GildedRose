@@ -29,19 +29,16 @@ public class NormalItem {
     }
 
     public void updateQuality() {
-        decreaseQuality();
-    }
-
-    protected boolean isSellInEqualOrLessThanTen(Item item) {
-        return item.getSellIn() <= 10;
-    }
-
-    protected boolean isSellinEqualOrLessThanFive(Item item) {
-        return item.getSellIn() <= 5;
+        if (isQualityMoreThanZero(item))
+            decreaseQuality();
     }
 
     protected boolean isQualityLessThanFifty(Item item) {
         return item.getQuality() < 50;
+    }
+
+    protected boolean isQualityMoreThanZero(Item item) {
+        return item.getQuality() > 0;
     }
 
 }
